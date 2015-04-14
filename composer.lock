@@ -1,0 +1,48 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "This file is @generated automatically"
+    ],
+    "hash": "0441bfa5de21c6b95c9c57f3e70331a2",
+    "packages": [
+        {
+            "name": "tonci/simple-orm",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/tonci/Simple-PHP-ORM.git",
+                "reference": "22536e05b1885a849f5c94ba5ee76d0d56683869"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/tonci/Simple-PHP-ORM/zipball/22536e05b1885a849f5c94ba5ee76d0d56683869",
+                "reference": "22536e05b1885a849f5c94ba5ee76d0d56683869",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "SimpleORM": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "description": "Simple ORM for PHP 5.4",
+            "homepage": "https://github.com/tonci/Simple-PHP-ORM",
+            "time": "2015-04-13 12:35:10"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": {
+        "tonci/simple-orm": 20
+    },
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": [],
+    "platform-dev": []
+}
