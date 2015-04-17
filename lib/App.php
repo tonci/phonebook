@@ -4,7 +4,7 @@ namespace lib;
 
 class App {
 
-    public static $loadedComponents = [];
+    protected static $loadedComponents = [];
 
     protected $controllerActionPrefix = 'action';
     protected $controllerClassSuffix = 'Controller';
@@ -19,6 +19,7 @@ class App {
         // return [];
         return [
             'request' => ['class' => 'lib\Request'],
+            'view' => ['class' => 'lib\View'],
         ];
     }
 
@@ -55,7 +56,7 @@ class App {
         $controllerName = $this->controllersNameSpace.'\\'.$controllerName.$this->controllerClassSuffix;
         $controller = new $controllerName;
 
-        //todo check if controller exists
+        // todo check if controller exists
         // check if action exists
 
         if (empty($actionName)) $actionName = $controller->defaultAction;
@@ -65,10 +66,10 @@ class App {
 
     public function run()
     {
-        $product = new \models\Product;
-        $products = $product->findAll();
-        print_r($this->handleRequest());
-        echo $products[0]->product_name;
+        // $product = new \models\Product;
+        // $products = $product->findAll();
+        echo $this->handleRequest();
+        // echo $products[0]->product_name;
     }
 
     public function getComponent($name='')
@@ -78,6 +79,11 @@ class App {
         }else{
             return null;
         }
+    }
+
+    public static function getViewPath()
+    {
+        return __DIR__.'/../views';
     }
 
     public static function autoload($className='')
