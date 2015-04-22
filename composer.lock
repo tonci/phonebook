@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "28a2af358655767fdef6b416a2d6ed84",
+    "hash": "0ccf209b89cf70caf4d5149688c824b3",
     "packages": [
         {
             "name": "tonci/simple-orm",

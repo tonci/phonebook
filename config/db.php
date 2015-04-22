@@ -3,7 +3,7 @@ return [
     'class' => 'SimpleORM\Adapters\MysqlAdapter',
     'host' => 'localhost',
     'user' => 'root',
-    'password' => 'pass',
+    'password' => '',
     'database' => 'phonebook',
     'charset' => 'utf8',
 ];
