@@ -4,6 +4,6 @@ return [
     'host' => 'localhost',
     'user' => 'root',
     'password' => '',
-    'database' => 'chaos',
+    'database' => 'phonebook',
     'charset' => 'utf8',
 ];

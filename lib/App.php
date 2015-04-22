@@ -20,6 +20,7 @@ class App {
         return [
             'request' => ['class' => 'lib\Request'],
             'view' => ['class' => 'lib\View'],
+            'user' => ['class' => 'lib\User'],
         ];
     }
 
@@ -72,13 +73,18 @@ class App {
         // echo $products[0]->product_name;
     }
 
-    public function getComponent($name='')
+    public static function getComponent($name='')
     {
         if (!empty(self::$loadedComponents[$name])) {
             return self::$loadedComponents[$name];
         }else{
             return null;
         }
+    }
+
+    public static function isSSL()
+    {
+        return strtolower(substr($_SERVER["SERVER_PROTOCOL"],0,5))=='https';
     }
 
     public static function getViewPath()
