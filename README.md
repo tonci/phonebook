@@ -2,17 +2,17 @@
 Simple PhoneBook Application
 
 # How to install
-1.  Make sure you have web server installed with php version >= 5.5.*
-2.  Navigate to web accesible folder and execute:
+*  Make sure you have web server installed with php version >= 5.5.*
+*  Navigate to web accesible folder and execute:
 ```
 git clone https://github.com/tonci/phonebook phonebook
 ```
-3.  Get dependencies: [Additional instructions](https://getcomposer.org/doc/00-intro.md)
+*  Get dependencies: [Additional instructions](https://getcomposer.org/doc/00-intro.md)
 ```
 composer install
 ```
-4.  Open config/db.php and setup a database
-5.  Run this SQL:
+*  Open config/db.php and setup a database
+*  Run this SQL:
 ```
 CREATE DATABASE IF NOT EXISTS `phonebook` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 USE `phonebook`;
