@@ -1,4 +1,8 @@
 {
+    "name": "tonci/phonebook",
+    "type": "application",
+    "description": "Simple phonebook application for PHP 5.5",
+    "homepage": "https://github.com/tonci/phonebook",  
     "require": {
         "tonci/simple-orm": "dev-master"
     }
