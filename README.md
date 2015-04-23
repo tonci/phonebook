@@ -3,7 +3,7 @@ Simple PhoneBook Application
 
 # How to install
 *  Make sure you have web server installed with php version >= 5.5.*
-*  Navigate to web accesible folder and execute:
+*  Navigate to web accesible folder and execute: (if installing on linux, you may need to add "sudo" infront of every command)
 ```
 git clone https://github.com/tonci/phonebook phonebook
 ```
