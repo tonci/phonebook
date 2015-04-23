@@ -51,7 +51,7 @@
 
     <!-- The fav icon -->
     <link rel="shortcut icon" href="<?= $baseUrl ?>img/favicon.ico">
-
+    
 </head>
 
 <body>

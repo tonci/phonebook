@@ -13,6 +13,13 @@ class Controller {
             $this->redirect('user', 'login');
             return false;
         }
+
+        if (!empty($_POST) && !App::getComponent('user')->isGuest()) {
+            if(@$_POST['csrf'] != App::getComponent('request')->getCSRF()){
+                echo "Bad Request";
+                exit;
+            }
+        }
         return true;
     }
 

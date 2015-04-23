@@ -41,6 +41,7 @@ class Html {
             $params['html_options'] = $params['html_options'] + ['action' => '', 'method' => 'post'];
         }
         $params['html_options'] = ['action' => '', 'method' => 'post'];
+        $params['csrf'] = App::getComponent('request')->getCSRF();
         return App::getComponent('view')->render(__DIR__.'/views/beginForm.php', $params);
     }
 

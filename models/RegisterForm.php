@@ -32,6 +32,7 @@ class RegisterForm extends \lib\FormModel {
 
     public function register()
     {
+        $this->username = htmlspecialchars(strip_tags($this->username));
         if ($this->validate()) {
             $user = new User;
             $user->username = $this->username;

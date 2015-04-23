@@ -52,7 +52,9 @@
 
     <!-- The fav icon -->
     <link rel="shortcut icon" href="img/favicon.ico">
-
+    <script type="text/javascript">
+        var csrf = "<?= lib\App::getComponent('request')->getCSRF(); ?>";
+    </script>
 </head>
 
 <body>
@@ -85,9 +87,14 @@
                     </div>
                     <ul class="nav nav-pills nav-stacked main-menu">
                         <li class="nav-header">Main</li>
-                        <li><a class="ajax-link" href="<?= Html::createLink('user', 'passwordchange'); ?>"><i class="glyphicon glyphicon-wrench"></i><span> Password Change</span></a>
+                        <li class="accordion">
+                            <a href="#"><i class="glyphicon glyphicon-plus"></i><span> User</span></a>
+                            <ul class="nav nav-pills nav-stacked">
+                                <li><a class="ajax-link" href="<?= Html::createLink('user', 'passwordchange'); ?>"><i class="glyphicon glyphicon-wrench"></i><span> Password Change</span></a></li>
+                                <li><a class="ajax-link" href="<?= Html::createLink('user', 'logout'); ?>"><i class="glyphicon glyphicon-off"></i><span> Logout</span></a></li>
+                            </ul>
                         </li>
-                        <li><a class="ajax-link" href="<?= Html::createLink('contacts', 'index'); ?>"><i class="glyphicon glyphicon-eye-open"></i><span> Contacts</span></a>
+                        <li><a class="ajax-link" href="<?= Html::createLink('contacts', 'index'); ?>"><i class="glyphicon glyphicon-user"></i><span> Contacts</span></a>
                         </li>
                        
                         

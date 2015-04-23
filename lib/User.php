@@ -14,7 +14,7 @@ class User {
     public function login(\models\User $user)
     {
         $this->session->set('user', $user);
-
+        App::getComponent('request')->reGenerateCSRF();
         return true;
     }
 
@@ -25,7 +25,8 @@ class User {
 
     public function isGuest()
     {
-        return (boolean)$this->session->get('user');
+        
+        return !(boolean)$this->session->get('user');
     }
 
     public function getId()

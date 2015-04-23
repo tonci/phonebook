@@ -9,15 +9,17 @@ use lib\App;
 use models\User;
 
 class UserController extends \lib\Controller {
-    public function actionIndex()
-    {
-        return $this->render('index', ['param'=>'test']);
-    }
+
+    public $defaultAction = 'login';
 
     public function actionLogin($params = '')
     {
         $model = new LoginForm;
         $params['model'] = $model;
+
+        if (!App::getComponent('user')->isGuest()) {
+            $this->redirect('contacts');
+        }
 
         if (isset($_POST['LoginForm'])) {
             $model->username = $_POST['LoginForm']['username'];
@@ -33,6 +35,11 @@ class UserController extends \lib\Controller {
 
     public function actionRegister()
     {
+
+        if (!App::getComponent('user')->isGuest()) {
+            $this->redirect('contacts');
+        }
+        
         $this->layout = 'login';
         $model = new RegisterForm;
         $params['model'] = $model;
@@ -58,10 +65,12 @@ class UserController extends \lib\Controller {
         if (isset($_POST['PasswordChangeForm'])) {
             $model->password = $_POST['PasswordChangeForm']['password'];
             $model->new_password = $_POST['PasswordChangeForm']['new_password'];
+            $model->password_repeat = $_POST['PasswordChangeForm']['password_repeat'];
             if ($model->change()) {
                 $params['success'] = true;
                 $model->password = '';
                 $model->new_password = '';
+                $model->password_repeat = '';
             }
         }
         return $this->render('password_change', $params);

@@ -15,6 +15,8 @@ class Request {
     public function __construct()
     {
         $this->baseUrl = $this->getBaseUrl();
+        print_r(App::getComponent('user'));
+        
     }
 
     public function getBaseUrl()
@@ -23,6 +25,16 @@ class Request {
         $pathInfo = pathinfo($currentPath);
         
         return $this->getProtocol().$this->getHostName().$pathInfo['dirname']."/";
+    }
+
+    public function reGenerateCSRF()
+    {
+        App::getComponent('session')->set('csrf', hash('md5', rand()));
+    }
+
+    public function getCSRF()
+    {
+        return App::getComponent('session')->get('csrf');
     }
 
     public function getProtocol()

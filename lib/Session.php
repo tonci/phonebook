@@ -17,7 +17,7 @@ class Session {
 
     public function get($name)
     {
-        return $_SESSION[$name];
+        return @$_SESSION[$name];
     }
 
     public function destroy()

@@ -8,6 +8,7 @@ class User extends \lib\Model {
     public function beforeSave()
     {
         $this->password = password_hash($this->password, PASSWORD_DEFAULT);
+        $this->username = htmlspecialchars(strip_tags($this->username));
         return true;
     }
 

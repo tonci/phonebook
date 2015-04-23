@@ -3,7 +3,10 @@ $(document).ready(function () {
         event.preventDefault();
         if (confirm('Delete this contact?')) {
             var el = this;
-            var delete_row = $.ajax( $(this).attr('href') )
+            var delete_row = $.ajax( {
+                url: $(this).attr('href') ,
+                data: {csrf: csrf}
+            })
             .done(function(success) {
                 if (success == true) {
                     $(el).closest('tr').remove();
@@ -33,6 +36,7 @@ var updater = function () {
     data[model_name] = {}
     var field_name = el.attr('data-name');
     data[model_name][field_name] = new_value;
+    data['csrf'] = csrf;
     
         var update_field = $.ajax( {
             url: el.closest('table').attr('data-updateurl')+'/'+el.attr('data-id'),

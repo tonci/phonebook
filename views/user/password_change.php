@@ -43,6 +43,17 @@ use lib\helpers\html\Html;
                             </div>
                         </div>
                         <div class="clearfix"></div><br>
+
+                        <div class="<?= $model->hasError('password_repeat') ? ' has-error' : '' ?>">
+                            <?php if ($model->hasError('password_repeat')): ?>
+                            <label class="control-label"><?= $model->getError('password_repeat') ?></label>
+                            <?php endif; ?>
+                            <div class="input-group input-group-lg<?= $model->hasError('password_repeat') ? ' has-error' : '' ?>">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-lock red"></i></span>
+                                <?= Html::passwordInput($model, 'password_repeat', ['html_options' => ['placeholder' => 'Repeat New Password ', 'class' => 'form-control']]) ?>
+                            </div>
+                        </div>
+                        <div class="clearfix"></div><br>
                         
                         <button type="submit" class="btn btn-primary right">Change Password</button>
                         
