@@ -5,5 +5,8 @@
     "homepage": "https://github.com/tonci/phonebook",  
     "require": {
         "tonci/simple-orm": "dev-master"
+    },
+    "autoload": {
+        "classmap": ["lib/", "models/", "controllers/"]
     }
 }

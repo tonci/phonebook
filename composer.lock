@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "0441bfa5de21c6b95c9c57f3e70331a2",
+    "hash": "0ccf209b89cf70caf4d5149688c824b3",
     "packages": [
         {
             "name": "tonci/simple-orm",
@@ -12,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/tonci/Simple-PHP-ORM.git",
-                "reference": "22536e05b1885a849f5c94ba5ee76d0d56683869"
+                "reference": "421f80afee1695e18c3b79966406af3eede23f08"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tonci/Simple-PHP-ORM/zipball/22536e05b1885a849f5c94ba5ee76d0d56683869",
-                "reference": "22536e05b1885a849f5c94ba5ee76d0d56683869",
+                "url": "https://api.github.com/repos/tonci/Simple-PHP-ORM/zipball/421f80afee1695e18c3b79966406af3eede23f08",
+                "reference": "421f80afee1695e18c3b79966406af3eede23f08",
                 "shasum": ""
             },
             "require": {
@@ -32,7 +32,7 @@
             "notification-url": "https://packagist.org/downloads/",
             "description": "Simple ORM for PHP 5.4",
             "homepage": "https://github.com/tonci/Simple-PHP-ORM",
-            "time": "2015-04-13 12:35:10"
+            "time": "2015-04-22 15:48:31"
         }
     ],
     "packages-dev": [],

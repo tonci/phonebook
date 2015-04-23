@@ -13,6 +13,7 @@ class User {
     public function login(\models\User $user)
     {
         $_SESSION['user'] = $user;
+
         return true;
     }
 
@@ -29,6 +30,7 @@ class User {
 
     public function getId()
     {
+
         return $_SESSION['user']->id;
     }
 

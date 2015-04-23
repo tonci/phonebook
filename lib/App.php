@@ -1,6 +1,6 @@
 <?php
 
-namespace lib;   
+namespace lib;
 
 class App {
 
@@ -18,9 +18,9 @@ class App {
     {
         // return [];
         return [
+            'user' => ['class' => 'lib\User'],
             'request' => ['class' => 'lib\Request'],
             'view' => ['class' => 'lib\View'],
-            'user' => ['class' => 'lib\User'],
         ];
     }
 
@@ -54,7 +54,7 @@ class App {
     public function handleRequest()
     {
         list($controllerName, $actionName, $params) = $this->getComponent('request')->resolve();
-        $controllerName = $this->controllersNameSpace.'\\'.$controllerName.$this->controllerClassSuffix;
+        $controllerName = $this->controllersNameSpace.'\\'.ucfirst($controllerName).$this->controllerClassSuffix;
         $controller = new $controllerName;
 
         // todo check if controller exists
@@ -92,10 +92,4 @@ class App {
         return __DIR__.'/../views';
     }
 
-    public static function autoload($className='')
-    {
-        spl_autoload($className); 
-    }
 }
-
-spl_autoload_register(['lib\\App', 'autoload'], true, true);
