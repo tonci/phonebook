@@ -20,7 +20,7 @@ class Request {
     public function getBaseUrl()
     {
         $currentPath = $_SERVER['PHP_SELF']; 
-        $pathInfo = pathinfo($currentPath); 
+        $pathInfo = pathinfo($currentPath);
         
         return $this->getProtocol().$this->getHostName().$pathInfo['dirname']."/";
     }

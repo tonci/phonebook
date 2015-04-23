@@ -7,12 +7,13 @@ class Controller {
     public $layout = 'main';
     public $layout_params = [];
 
-    public function beforeAction()
+    public function beforeAction($action)
     {
-        if (App::getComponent('user')->isGuest()) {
-            
+        if (App::getComponent('user')->isGuest() && (strtolower($this->getClassName()) != 'user' || !in_array($action, ['login', 'register']))) {
+            $this->redirect('user', 'login');
+            return false;
         }
-        return false;
+        return true;
     }
 
     public function render($view, $params = [])

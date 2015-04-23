@@ -4,39 +4,38 @@ namespace lib;
 
 class User {
 
+    private $session;
+
     public function __construct()
     {
-        session_set_cookie_params(3600, '/', $_SERVER['SERVER_NAME'], App::isSSL(), true);
-        session_start();
+        $this->session = App::getComponent('session');
     }
 
     public function login(\models\User $user)
     {
-        $_SESSION['user'] = $user;
+        $this->session->set('user', $user);
 
         return true;
     }
 
     public function logout()
     {
-        session_unset();
-        session_destroy();
+        $this->session->destroy();
     }
 
     public function isGuest()
     {
-        return empty($_SESSION['user']);
+        return (boolean)$this->session->get('user');
     }
 
     public function getId()
     {
-
-        return $_SESSION['user']->id;
+        return $this->session->get('user')->id;
     }
 
     public function getUsername()
     {
-        return $_SESSION['user']->username;
+        return $this->session->get('user')->username;
     }
 
 }

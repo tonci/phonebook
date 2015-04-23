@@ -18,6 +18,7 @@ class App {
     {
         // return [];
         return [
+            'session' => ['class' => 'lib\Session'],
             'user' => ['class' => 'lib\User'],
             'request' => ['class' => 'lib\Request'],
             'view' => ['class' => 'lib\View'],
@@ -51,24 +52,38 @@ class App {
         return $object;
     }
 
+    public function showErrorPage()
+    {
+        header("HTTP/1.0 404 Not Found");
+        $controllerName = $this->controllersNameSpace.'\\ErrorController';
+        $controller = new $controllerName;
+        return $controller->action404();
+    }
+
     public function handleRequest()
     {
         list($controllerName, $actionName, $params) = $this->getComponent('request')->resolve();
-        $controllerName = $this->controllersNameSpace.'\\'.ucfirst($controllerName).$this->controllerClassSuffix;
-        if (!class_exists($controllerName)){
-            header("HTTP/1.0 404 Not Found");
-            $controllerName = $this->controllersNameSpace.'\\ErrorController';
-            $controller = new $controllerName;
-            return $controller->action404();
-        }
-        $controller = new $controllerName;
+        $controllerFullName = $this->controllersNameSpace.'\\'.ucfirst($controllerName).$this->controllerClassSuffix;
 
-        // todo check if controller exists
-        // check if action exists
+        if (!class_exists($controllerFullName) || strtolower($controllerName) == 'error'){
+            return $this->showErrorPage();
+        }
+        $controller = new $controllerFullName;
 
         if (empty($actionName)) $actionName = $controller->defaultAction;
-        $actionName = $this->controllerActionPrefix.$actionName;
-        return $controller->$actionName($params);
+        $actionFullName = $this->controllerActionPrefix.$actionName;
+
+        if (!method_exists($controller, $actionFullName)) {
+            return $this->showErrorPage();
+        }
+
+        if ($controller->beforeAction($actionName)) {
+            return $controller->$actionFullName($params);
+        }else{
+            $request = $this->getComponent('request');
+            $request->redirect($request->getBaseUrl());
+        }
+
     }
 
     public function run()

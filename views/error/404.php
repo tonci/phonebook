@@ -85,12 +85,7 @@
 <div class="content">
     The page your are looking for is not found.
     <br>
-    <a href="index.html">Go Home</a>
-    or
-    <br>
-    <br>
-
-    <form>Search<br><input autofocus type="text" name="search"/></form>
+    <a href="<?= $home_url; ?>">Go Home</a>
 </div>
 </body>
 </html>
