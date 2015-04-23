@@ -6,7 +6,9 @@ class Session {
 
     public function __construct()
     {
-        session_set_cookie_params(60*60*24, '/', $_SERVER['SERVER_NAME'], App::isSSL(), true);
+        // if tested locally $_SERVER['SERVER_NAME'] will most probably give "localhost" wich results in a problem setting the cookie in chrome
+        // so I leave it NULL
+        session_set_cookie_params(60*60*24, '/', NULL /*$_SERVER['SERVER_NAME']*/, (bool)App::isSSL(), true);
         session_start();
     }
 

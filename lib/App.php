@@ -36,6 +36,13 @@ class App {
             }
         }
 
+        // ensure session is loaded first
+        self::$loadedComponents['session'] = new $config['components']['session']['class']();
+        $this->configureComponent(self::$loadedComponents['session'], $config['components']['session']);
+        unset($config['components']['session']);
+        // session_start();
+        // print_r($_SESSION);
+
         foreach ($config['components'] as $id => $properties) {
             self::$loadedComponents[$id] = new $properties['class']();
             $this->configureComponent(self::$loadedComponents[$id], $properties);
