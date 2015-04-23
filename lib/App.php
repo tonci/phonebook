@@ -55,6 +55,12 @@ class App {
     {
         list($controllerName, $actionName, $params) = $this->getComponent('request')->resolve();
         $controllerName = $this->controllersNameSpace.'\\'.ucfirst($controllerName).$this->controllerClassSuffix;
+        if (!class_exists($controllerName)){
+            header("HTTP/1.0 404 Not Found");
+            $controllerName = $this->controllersNameSpace.'\\ErrorController';
+            $controller = new $controllerName;
+            return $controller->action404();
+        }
         $controller = new $controllerName;
 
         // todo check if controller exists
@@ -67,10 +73,7 @@ class App {
 
     public function run()
     {
-        // $product = new \models\Product;
-        // $products = $product->findAll();
         echo $this->handleRequest();
-        // echo $products[0]->product_name;
     }
 
     public static function getComponent($name='')

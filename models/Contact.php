@@ -21,14 +21,14 @@ class Contact extends \lib\Model {
         if (mb_strlen(implode('',$name_parts[0]), 'UTF-8') < 4) $this->addError('full_name', 'Full name must contain at least 4 characters');
 
         foreach ($name_parts[0] as $name) {
-            if (mb_strlen($name, 'UTF-8') < 4){
+            if (mb_strlen($name, 'UTF-8') < 2){
                 $this->addError('full_name', 'Each part of the name must be at least 2 characters long');
                 break;
             }
         }
 
-        $another_contact = (new Contact)->findByFull_name($this->full_name);
-        if (!empty($another_contact)) $this->addError('full_name', 'Full name is not unique');
+        @$another_contact = (new Contact)->findByFull_name($this->full_name)[0];
+        if (!empty($another_contact) && $another_contact->id != $this->id) $this->addError('full_name', 'Full name is not unique');
 
         // by definition: http://en.wikipedia.org/wiki/E.164
         if (!preg_match('/^\+[1-9]\d{1,14}$/', $this->phone)) $this->addError('phone', 'Phone doesn`t match the E.164 pattern (should look like "+3593742734")');

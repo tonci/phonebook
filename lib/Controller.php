@@ -9,7 +9,10 @@ class Controller {
 
     public function beforeAction()
     {
-        return true;
+        if (App::getComponent('user')->isGuest()) {
+            
+        }
+        return false;
     }
 
     public function render($view, $params = [])

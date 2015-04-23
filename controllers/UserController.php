@@ -73,8 +73,4 @@ class UserController extends \lib\Controller {
         $this->redirect('user', 'login');
     }
 
-    public function actionTest()
-    {
-        print_r($_SESSION);
-    }
 }
