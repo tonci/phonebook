@@ -2,6 +2,10 @@
     use lib\helpers\html\Html;
 ?>
 <div class="box-content">
+
+            <div class="alert alert-info">
+                In order to edit contact - double click on the desired cell
+            </div>
 <?= Html::beginForm(['html_options' => ['class' => 'form-horizontal']]) ?>
     <table class="table table-bordered table-striped table-condensed" data-model="<?= $model_name; ?>" data-updateurl="<?= $update_url; ?>">
         <thead>

@@ -61,7 +61,9 @@
                             class="glyphicon glyphicon-chevron-up"></i></a>
                     <a href="#" class="btn btn-close btn-round btn-default"><i class="glyphicon glyphicon-remove"></i></a>
                 </div>
+
             </div>
+            
             
             <?= $grid; ?>
         </div>
