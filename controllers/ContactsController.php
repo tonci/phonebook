@@ -46,7 +46,7 @@ class ContactsController extends \lib\Controller {
                             {
                                 // this logic should be mevoed inside the grid and automatically gets the link
                                 $url = App::getComponent('request')->createLink('contacts', 'delete', $data->id);
-                                return '<td><a class="btn btn-danger btn-sm grid-delete" href="'.$url.'">
+                                return '<td><a class="btn btn-danger btn-sm grid-delete" onclick="return confirm(\'Delete this contact?\')" href="'.$url.'">
                                             <i class="glyphicon glyphicon-trash"></i>
                                             Delete
                                         </a></td>';
